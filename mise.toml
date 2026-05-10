@@ -1,0 +1,7 @@
+[tools]
+kubectl = "latest"
+flux2 = "latest"
+helm = "latest"
+k9s = "latest"
+kubie = "latest"
+kubelogin = "latest"
