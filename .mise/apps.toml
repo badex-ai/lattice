@@ -1,0 +1,3 @@
+[env]
+CLUSTER_NAME= "apps"
+KUBECONFIG = "{{env.HOME}}/.kube/apps/config"
