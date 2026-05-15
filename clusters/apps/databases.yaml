@@ -1,0 +1,18 @@
+version: kustomization.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata: 
+  name: database-controllers
+  namespace: flux-system
+spec: 
+  dependsOn: 
+    - name: infra-controllers
+  interval: 1h
+  retryInterval: 2m
+  timeout: 10m
+  sourceRef: 
+    kind: GitRespository
+    name: flux-system
+  path: ./database/dev
+  prune: true
+  wait: true
+
