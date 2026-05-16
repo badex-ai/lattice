@@ -7,11 +7,11 @@ metadata:
 spec:
   interval: 1h
   retryInterval: 2m
-  timeout: 5m
+  timeout: 10m
   sourceRef:
-    kind: ExternalArtifact
-    name: infrastructure
-  path: ./infrastructure/apps/controllers
+    kind: GitRepository
+    name: flux-system
+  path: ./infrastructure/data/controllers
   prune: true
   wait: true
 ---
@@ -27,15 +27,8 @@ spec:
   retryInterval: 2m
   timeout: 5m
   sourceRef:
-    kind: GitRepository
+    kind: ExternalArtifact
     name: infrastructure
-  path: ./infrastructure/apps/configs
+  path: ./infrastructure/data/configs
   prune: true
-  patches:
-    - patch: |
-        - op: replace
-          path: /spec/acme/server
-          value: https://acme-v02.api.letsencrypt.org/directory
-      target:
-        kind: ClusterIssuer
-        name: letsencrypt
+  wait: true

@@ -1,7 +1,7 @@
 version: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata: 
-  name: database-controllers
+  name: databases
   namespace: flux-system
 spec: 
   dependsOn: 
@@ -12,7 +12,11 @@ spec:
   sourceRef: 
     kind: GitRepository
     name: flux-system
-  path: ./database/dev
+  path: ./database/data
   prune: true
   wait: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
 
